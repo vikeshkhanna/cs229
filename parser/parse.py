@@ -1,7 +1,7 @@
 # @author - Vikesh Khanna
 # This file takes as input the data from FootballData.co.uk in csv format and extracts the following different csv files-
 # teams - csv file with each team name. The row number of the team is important as it will be used as pointer in other matrices
-# performance - The training matrix csv. There are 2*(n+1) columns. Each n+1 columns is teamID and the n features we are capturing. (see legend)
+# train - The training matrix csv. There are 2*(n+1) columns. Each n+1 columns is teamID and the n features we are capturing. (see legend)
 
 import csv
 import sys
@@ -32,8 +32,8 @@ def main(args):
 	# team list
 	teams = []
 
-	# performance matrix - 2*(n+1) rows. Each row is a match. First row is the team ID, n+1 features of home team, (1, n+1) features of the away team
-	performance = []
+	# train matrix - 2*(n+1) rows. Each row is a match. First row is the team ID, n+1 features of home team, (1, n+1) features of the away team
+	train = []
 
 	for row in reader:
 		features = {Constants.HOME : [], Constants.AWAY: []}
@@ -64,12 +64,12 @@ def main(args):
 				outcome = Features.FTR_MAP[feature]
 
 		# Horizontally join the two lists	
-		performance.append(features[Constants.HOME] + features[Constants.AWAY] + [outcome])
+		train.append(features[Constants.HOME] + features[Constants.AWAY] + [outcome])
 
 	#Write to mat file
 	np_teams = np.array(teams)
-	np_performance = np.array(performance)
-	np_dict = {'teams':np_teams, 'performance':np_performance}
+	np_train = np.array(train)
+	np_dict = {'teams':np_teams, 'train':np_train}
 	
 	io.savemat(OUTFILE, np_dict)
 
