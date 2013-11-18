@@ -1,25 +1,14 @@
-function prediction= test(Xid, Yid, matchID, testdata, B, k)
-% find row corresponding to matchID for both X and Y
-[n_players, n_matches, n_features]=size(testdata);
-for match= 1:n_matches
-	if testdata(Xid, match, 1)==matchID
-		Xrow= match;
-	end
-	if testdata(Yid, match, 1)==matchID
-		Yrow= match;
-	end
-endfor
-% find average performance matrices of X and Y for the last k matches
-pX= zeros(1, n_features);
-pY= zeros(1, n_features);
-
-for xr= Xrow-k:Xrow
-	pX+= testdata(Xid, xr, :);
-for yr= Yrow-k:Yrow
-	pY+= testdata(Yid, yr, :);
-% find difference between performance matrices
-diff= pX-pY;
-predProb= mnrval(B, diff);
-% return the prediction with the highest probability
-[maxprob, prediction]= max(predProb);
-
+function [maxprob,prediction]= test(Xid, Yid, matchID, testdata, B, k)
+	% find row corresponding to matchID for both X and Y
+	[~, ~, n_features]=size(testdata);
+	Xrow = find(squeeze(testdata(Xid,:,n_features))==matchID);
+	Yrow = find(squeeze(testdata(Yid,:,n_features))==matchID);
+	% find average performance matrices of X and Y for the last k matches
+	pX = sum(squeeze(testdata(Xid,Xrow-k:Xrow-1,1:end-2)),1);
+	pY = sum(squeeze(testdata(Yid,Yrow-k:Yrow-1,1:end-2)),1);
+	% find difference between performance matrices
+	diff= (pX-pY)/k;
+	predProb= mnrval(B, diff);
+	% return the prediction with the highest probability
+	[maxprob, prediction]= max(predProb);
+end
