@@ -1,9 +1,9 @@
-function [testdata]= gentestdata(fmat, teams)
+function [testdata]= gentestdata(fmat, n_teams)
 % fmat is the feature matrix having f features per team- the first column is teamID for home team,
 % next f columns are features for home team, next column is teamID for away team, 
 % next f are features for away team, last column is the y vector 
 
-[n_teams, ~]= size(teams);
+%[n_teams, ~]= size(teams);
 [n_rows, n_columns]= size(fmat);
 n_features= (n_columns-3)/2;        % check if int
 matches_per_team= 2*n_rows/n_teams;        % check if int
