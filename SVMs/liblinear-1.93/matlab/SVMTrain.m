@@ -1,4 +1,4 @@
-function model= SVMtrain(k, n_teams, traindata)
+function model= SVMTrain(traindata, k, n_teams)
 
 
 [testdata] = gentestdata(traindata, n_teams);

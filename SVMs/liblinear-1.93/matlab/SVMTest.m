@@ -1,4 +1,4 @@
-function correct= SVMtest(testmatrix, model, k, n_teams) 
+function correct= SVMTest(testmatrix, model, k, n_teams) 
 %load data2.mat;
 %load new_trained_k_6.mat;
 %[B,dev] = logist(performance,3);
