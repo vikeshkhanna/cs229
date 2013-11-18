@@ -1,6 +1,5 @@
 function model= SVMTrain(traindata, k, n_teams)
 
-
 [testdata] = gentestdata(traindata, n_teams);
 
 %ind1 = 64; % Index of the first match to be TRAINED

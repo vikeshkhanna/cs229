@@ -5,7 +5,7 @@ function correct= SVMTest(testmatrix, model, k, n_teams)
 %save trained_param
 
 testdata = gentestdata(testmatrix, n_teams);
-ind1 = find_index(traindata, n_teams, k);
+ind1 = find_index(testmatrix, n_teams, k);
 %ind1 = 64; % Index of the first match to be tested
 %k = 6; % The parameter "k"
 

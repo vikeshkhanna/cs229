@@ -14,7 +14,7 @@ function ind = find_index(train, num_teams, k)
         count(yid) = count(yid)+1;
         
         % When every time has played at least k matches, return that index
-        if(min(count)>=k)
+        if(min(count)>k)
                 ind=i;
                 break;
         end
