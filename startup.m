@@ -1,1 +1,1 @@
-addpath('utils');
+addpath(strcat(pwd, '/utils/'));
