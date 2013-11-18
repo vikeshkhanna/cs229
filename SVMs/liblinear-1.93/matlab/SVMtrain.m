@@ -3,10 +3,10 @@ function model= SVMtrain(k, n_teams, traindata)
 
 [testdata] = gentestdata(traindata, n_teams);
 
-ind1 = 64; % Index of the first match to be TRAINED
+%ind1 = 64; % Index of the first match to be TRAINED
 %k = 6; % The parameter "k"
 %n_teams= size(teams);
-%ind1 = findIndex(k, traindata, n_teams)
+ind1 = find_index(traindata, n_teams, k)
 [q1 q2 q3] = size(testdata);
 [p1 p2] = size(traindata);
 n_features_tx= (p2-3)/2;
