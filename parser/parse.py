@@ -59,7 +59,7 @@ def main(args):
 		# Horizontally join the two lists	
 		train.append(features[Constants.HOME] + features[Constants.AWAY] + [outcome])
 	
-	OUTFILE = "%s.mat"%csv_file
+	OUTFILE = "%s.mat"%csvfile
 
 	#Write to mat file
 	np_teams = np.array(teams)
