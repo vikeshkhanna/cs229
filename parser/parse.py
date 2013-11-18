@@ -9,20 +9,15 @@ import numpy as np
 import scipy.io as io 
 from utils import *
 
-OUTFILE='data.mat'
-
-def legend(legend_file):
-	pass
+OUTFILE='../data/data.mat'
 
 def main(args):
-	if len(args)<2:
-		print("Usage: python parse.py <csv_file> <legend>")
+	if len(args)<1:
+		print("Usage: python parse.py <csv_file>")
 		sys.exit(1)
 
 	csvfile = args[0]
-	legend_file = args[1]
 
-	legend(legend_file)
 	f = open(csvfile)
 	reader = csv.reader(f)
 
