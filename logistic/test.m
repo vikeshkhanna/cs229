@@ -8,7 +8,10 @@ function [maxprob,prediction]= test(Xid, Yid, matchID, testdata, B, k)
 	pY = sum(squeeze(testdata(Yid,Yrow-k:Yrow-1,1:end-2)),1);
 	% find difference between performance matrices
 	diff= (pX-pY)/k;
-	predProb= mnrval(B, diff);
+    disp(diff)
+    disp(pX)
+    disp(pY)
+    predProb= mnrval(B, diff);
 	% return the prediction with the highest probability
 	[maxprob, prediction]= max(predProb);
 end

@@ -6,7 +6,19 @@ function [testdata]= gentestdata(fmat, n_teams)
 %[n_teams, ~]= size(teams);
 [n_rows, n_columns]= size(fmat);
 n_features= (n_columns-3)/2;        % check if int
-matches_per_team= 2*n_rows/n_teams;        % check if int
+%matches_per_team= 2*n_rows/n_teams;        % check if int
+
+count = zeros(n_teams, 1);
+ for i=1:n_rows
+        % ID of team 1
+        xid = fmat(i,1);
+        % ID for team 2
+        yid = fmat(i, n_features +2);
+        count(xid) = count(xid)+1;
+        count(yid) = count(yid)+1;
+
+matches_per_team= max(count);
+    
 testdata= zeros(n_teams, matches_per_team, n_features+2); 
 % Extra 2 - One indicates home/away (1/0) and match ID
 match_count= zeros(n_teams);
