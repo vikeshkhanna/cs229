@@ -9,8 +9,6 @@ import numpy as np
 import scipy.io as io 
 from utils import *
 
-OUTFILE='../data/data.mat'
-
 def main(args):
 	if len(args)<1:
 		print("Usage: python parse.py <csv_file>")
@@ -60,6 +58,8 @@ def main(args):
 
 		# Horizontally join the two lists	
 		train.append(features[Constants.HOME] + features[Constants.AWAY] + [outcome])
+	
+	OUTFILE = "%s.mat"%csv_file
 
 	#Write to mat file
 	np_teams = np.array(teams)
