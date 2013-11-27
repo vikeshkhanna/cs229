@@ -1,4 +1,4 @@
-function [prediction]= test(Xid, Yid, matchID, testdata, model, k)
+function [prediction]= test_s(Xid, Yid, matchID, testdata, model, k)
 % find row corresponding to matchID for both X and Y
 %[~, ~, n_features]=size(testdata);
 
@@ -8,8 +8,9 @@ function [prediction]= test(Xid, Yid, matchID, testdata, model, k)
 % find average performance matrices of X and Y for the last k matches
 %pX = sum(squeeze(testdata(Xid,Xrow-k:Xrow-1,1:end-2)),1);
 %pY = sum(squeeze(testdata(Yid,Yrow-k:Yrow-1,1:end-2)),1);
-pX= GetFeatures(Xid, matchID, testdata, k)
-pY= GetFeatures(Yid, matchID, testdata, k)
+
+pX= GetFeatures(Xid, matchID, testdata, k);
+pY= GetFeatures(Yid, matchID, testdata, k);
 % find difference between performance matrices
 diff= (pX-pY)/k;
 
