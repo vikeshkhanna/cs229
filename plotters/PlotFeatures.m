@@ -35,13 +35,13 @@ winLoseIndex=1;
 drawIndex=1;
 for i= minIndex:n_matches
         if train(i, n_columns)== 1  % home team wins
-            winMatrix(winLoseIndex, :) = GetFeatures(train(i, 1), i, testdata, k)- GetFeatures(train(i, n_features+2), i, testdata, k);
+            winMatrix(winIndex, :) = GetFeatures(train(i, 1), i, testdata, k)- GetFeatures(train(i, n_features+2), i, testdata, k);
             %loseMatrix(winLoseIndex, :)= GetFeatures(train(i, n_features+2), i, testdata, k)- GetFeatures(train(i, 1), i, testdata, k);
-            winIndex= winLoseIndex + 1;
+            winIndex= winIndex + 1;
         elseif train(i, n_columns)== 2 % home team loses
             %winMatrix(winLoseIndex, :)= GetFeatures(train(i, n_features+2), i, testdata, k)- GetFeatures(train(i, 1), i, testdata, k);
-            loseMatrix(winLoseIndex, :)= GetFeatures(train(i, 1), i, testdata, k)- GetFeatures(train(i, n_features+2), i, testdata, k);
-            loseIndex= winLoseIndex+1;
+            loseMatrix(loseIndex, :)= GetFeatures(train(i, 1), i, testdata, k)- GetFeatures(train(i, n_features+2), i, testdata, k);
+            loseIndex= loseIndex+1;
         elseif train(i, n_columns)== 3 % draw
             drawMatrix(drawIndex, :)= GetFeatures(train(i, 1), i, testdata, k);
             drawIndex= drawIndex+1;
