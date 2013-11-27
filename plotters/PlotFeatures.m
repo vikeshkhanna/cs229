@@ -43,7 +43,7 @@ for i= minIndex:n_matches
             loseMatrix(loseIndex, :)= GetFeatures(train(i, 1), i, testdata, k)- GetFeatures(train(i, n_features+2), i, testdata, k);
             loseIndex= loseIndex+1;
         elseif train(i, n_columns)== 3 % draw
-            drawMatrix(drawIndex, :)= GetFeatures(train(i, 1), i, testdata, k);
+            drawMatrix(drawIndex, :)= GetFeatures(train(i, 1), i, testdata, k)- GetFeatures(train(i, n_features+2), i, testdata, k);
             drawIndex= drawIndex+1;
             %drawMatrix(drawIndex, :)= GetFeatures(train(i, n_features+2), i, testdata, k);
             %drawIndex= drawIndex+1;
