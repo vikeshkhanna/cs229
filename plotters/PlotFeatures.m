@@ -1,7 +1,7 @@
 % plots the features to check for gaussian distribution
 n_teams= 20;
 k= 4;
-load('EPL_2013_2014.csv.mat');
+load('EPL_2012_2013.csv.mat');
 % matrix train is loaded
 % for every match that is win/ loss/ draw, get the team ID of winning/
 % losing/ both teams and get their features
@@ -31,7 +31,8 @@ end
 winMatrix= zeros(n_win, n_features);
 loseMatrix= zeros(n_loss, n_features);
 drawMatrix= zeros(n_draws, n_features);
-winLoseIndex=1;
+winIndex=1;
+loseIndex=1;
 drawIndex=1;
 for i= minIndex:n_matches
         if train(i, n_columns)== 1  % home team wins
