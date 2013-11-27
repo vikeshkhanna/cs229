@@ -53,7 +53,7 @@ end
 
 
 
-%density(winMatrix, 1);
+density([winMatrix(:,1) winMatrix(:,3)], 'Win Matches');
 %density(loseMatrix, 2);
 %density(drawMatrix, 3);
             
