@@ -1,7 +1,8 @@
+function [winMatrix, loseMatrix, drawMatrix]= GetMatrices(train, n_teams, k)
 % plots the features to check for gaussian distribution
-n_teams= 20;
-k= 4;
-load('EPL_2012_2013.csv.mat');
+%n_teams= 20;
+%k= 4;
+%load('EPL_2012_2013.csv.mat');
 % matrix train is loaded
 % for every match that is win/ loss/ draw, get the team ID of winning/
 % losing/ both teams and get their features
