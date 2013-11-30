@@ -1,0 +1,10 @@
+load('EPL_2012_2013.csv.mat');
+[w, l d]= GetMatrices(train, 20, 4);
+load('EPL_2013_2014.csv.mat');
+[w1, l1, d1]= GetMatrices(train, 20, 4);
+w2= [w; w1]; 
+l2= [l;l1];
+d2= [d;d1];
+%density([w2(:,1) w2(:,3)], 'Won Matches');
+%density([l2(:,1) l2(:,3)], 'Lost Matches');
+density([d2(:,1) d2(:,3)], 'Drawn Matches');
