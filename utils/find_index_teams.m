@@ -20,7 +20,7 @@ for i=1:rows
         cnt = cnt+1;
     end
     
-    if(cnt==k)
+    if(cnt==k+1)
         i1=i;
         break;
     end
