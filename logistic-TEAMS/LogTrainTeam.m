@@ -10,7 +10,7 @@ end
 %disp(indices)
 [~, n_features]= size(performance);
 n_features= (n_features-3)/2;
-new_n_features= n_features;   % one extra feature for home/ away
+new_n_features= n_features+1;   % one extra feature for home/ away
 model= zeros(n_teams, new_n_features+1, 2);    % one extra theta for constant term
 % now iterate over all teams and find their feature matrices
 for team= 1:n_teams
@@ -48,12 +48,12 @@ for team= 1:n_teams
         %disp(squeeze(testdata(oppID, matchID, :)))
         match_feature= GetFeatures(team, matchID, testdata, k) - GetFeatures(oppID, matchID, testdata, k);
         % append home/ away feature
-%         
-%         if(performance(matchID, 1)==team)
-%             match_feature= [match_feature, 1];
-%         else
-%             match_feature= [match_feature, -1];
-%         end
+         
+         if(performance(matchID, 1)==team)
+             match_feature= [match_feature, 1];
+         else
+             match_feature= [match_feature, -1];
+         end
          index= testdata_row- test_start_pos + 1- continued_count;
         
         %fprintf('testdata_row= %d', testdata_row);
