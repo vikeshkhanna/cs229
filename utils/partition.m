@@ -2,7 +2,8 @@ function [ startpos, endpos ] = partition( X, slicep1, slicep2)
 %PARTITION Returns 
 %   Returns the indices of X that correspond to the chunk of X between
 %   slicep1 and slicep2 (fractions). If either of these values is negative,
-%   it is taken from the end of X (row-wise).
+%   it is taken from the end of X (row-wise). Typical use case -
+%   partition(X, 0, 0.3); partition(X, -0.3, 1);
 
 n = size(X,1);
 
