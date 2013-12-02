@@ -20,7 +20,7 @@ correct = maxprob;
 for i=ind1:p1
     Xid = testmatrix(i, 1);
     Yid = testmatrix(i, n_features+2);
-    prediction(i-ind1+1) = test(Xid, Yid, i, testdata, model, k);
+    prediction(i-ind1+1) = test_s(Xid, Yid, i, testdata, model, k);
     if prediction(i-ind1+1) == testmatrix(i,end)
         correct(i-ind1+1) = 1;
     end
