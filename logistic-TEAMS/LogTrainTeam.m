@@ -10,7 +10,7 @@ end
 %disp(indices)
 [~, n_features]= size(performance);
 n_features= (n_features-3)/2;
-new_n_features= n_features+1;   % one extra feature for home/ away
+new_n_features= n_features;   % one extra feature for home/ away
 model= zeros(n_teams, new_n_features+1, 2);    % one extra theta for constant term
 % now iterate over all teams and find their feature matrices
 for team= 1:n_teams
@@ -24,8 +24,8 @@ for team= 1:n_teams
     %features= zeros(n_matches_team, new_n_features);
     %Y= zeros(n_matches_team, 1);
     %disp(team)
-    disp(test_start_pos)
-    disp(test_end_pos)
+    %disp(test_start_pos)
+    %disp(test_end_pos)
     continued_count=0;
     for testdata_row= test_start_pos:test_end_pos
         % get match ID
@@ -48,15 +48,16 @@ for team= 1:n_teams
         %disp(squeeze(testdata(oppID, matchID, :)))
         match_feature= GetFeatures(team, matchID, testdata, k) - GetFeatures(oppID, matchID, testdata, k);
         % append home/ away feature
-        if(performance(matchID, 1)==team)
-            match_feature= [match_feature, 1];
-        else
-            match_feature= [match_feature, -1];
-        end
-        index= testdata_row- test_start_pos + 1- continued_count;
+%         
+%         if(performance(matchID, 1)==team)
+%             match_feature= [match_feature, 1];
+%         else
+%             match_feature= [match_feature, -1];
+%         end
+         index= testdata_row- test_start_pos + 1- continued_count;
         
-        fprintf('testdata_row= %d', testdata_row);
-        fprintf('index= %d\n', index);
+        %fprintf('testdata_row= %d', testdata_row);
+        %fprintf('index= %d\n', index);
         for f= 1:new_n_features
             features(index, f)= match_feature(f);
         end
@@ -81,16 +82,8 @@ for team= 1:n_teams
     end
     % now we have the features matrix for team. Run the training algorithm
     % and find the theta values for team.
-    %disp(features)
-    %disp(Y)
-    %disp(performance(features, Y));
-  %  m = mnrfit(features,Y);
-    %disp(m)
-
     mmm= mnrfit(features, Y);
     model(team, :, 1)= mmm(:, 1);
     model(team, :, 2)= mmm(:, 2);
-    
-
 end
 
