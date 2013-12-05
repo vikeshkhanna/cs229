@@ -5,3 +5,4 @@ addpath(strcat(pwd, '/logistic/'));
 addpath(strcat(pwd, '/plotters/'));
 addpath(strcat(pwd, '/data/'));
 addpath(strcat(pwd, '/logistic-TEAMS/'));
+addpath(strcat(pwd, '/SVM-TEAMS/'));
